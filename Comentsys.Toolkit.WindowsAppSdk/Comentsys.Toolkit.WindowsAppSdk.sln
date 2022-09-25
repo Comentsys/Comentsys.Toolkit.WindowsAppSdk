@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comentsys.Toolkit.WindowsAppSdk", "Comentsys.Toolkit.WindowsAppSdk\Comentsys.Toolkit.WindowsAppSdk.csproj", "{3CB871ED-905C-4C59-A9DB-89D2E3457BAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CB871ED-905C-4C59-A9DB-89D2E3457BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB871ED-905C-4C59-A9DB-89D2E3457BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB871ED-905C-4C59-A9DB-89D2E3457BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB871ED-905C-4C59-A9DB-89D2E3457BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {373BBA36-6728-4582-86AC-F986C91BCFE9}
+	EndGlobalSection
+EndGlobal
