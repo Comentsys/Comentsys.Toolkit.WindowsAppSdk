@@ -20,7 +20,7 @@
 		<Description>Windows App SDK Toolkit for Controls, Converters and Extensions</Description>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RepositoryUrl>http://github.com/Comentsys/Comentsys.Toolkit.WindowsAppSdk</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Comentsys/Comentsys.Toolkit.WindowsAppSdk</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>comentsys.toolkit.windowsappsdk.png</PackageIcon>
 	</PropertyGroup>
