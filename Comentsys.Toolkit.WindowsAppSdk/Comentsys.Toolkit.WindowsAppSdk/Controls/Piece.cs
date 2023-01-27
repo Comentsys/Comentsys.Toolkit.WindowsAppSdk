@@ -201,7 +201,7 @@ public class Piece : Grid
     /// <summary>
     /// Is Square Dependency Property
     /// </summary>
-    private readonly DependencyProperty IsSquareProperty =
+    public readonly DependencyProperty IsSquareProperty =
     DependencyProperty.Register(nameof(IsSquare), typeof(bool),
     typeof(Piece), new PropertyMetadata(false,
     new PropertyChangedCallback((obj, eventArgs) =>

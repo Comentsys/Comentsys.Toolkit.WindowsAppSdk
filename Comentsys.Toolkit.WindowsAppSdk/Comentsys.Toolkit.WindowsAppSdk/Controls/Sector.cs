@@ -87,7 +87,7 @@ public class Sector : Path
     /// <summary>
     /// Start Property
     /// </summary>
-    private readonly DependencyProperty StartProperty =
+    public readonly DependencyProperty StartProperty =
     DependencyProperty.Register(nameof(Start), typeof(double),
     typeof(Sector), new PropertyMetadata(0.0,
     new PropertyChangedCallback((DependencyObject obj, DependencyPropertyChangedEventArgs eventArgs) =>
@@ -108,7 +108,7 @@ public class Sector : Path
     /// <summary>
     /// Finish Property
     /// </summary>
-    private readonly DependencyProperty FinishProperty =
+    public readonly DependencyProperty FinishProperty =
     DependencyProperty.Register(nameof(Finish), typeof(double),
     typeof(Sector), new PropertyMetadata(0.0,
     new PropertyChangedCallback((DependencyObject obj, DependencyPropertyChangedEventArgs eventArgs) =>
@@ -129,7 +129,7 @@ public class Sector : Path
     /// <summary>
     /// Radius Property
     /// </summary>
-    private readonly DependencyProperty RadiusProperty =
+    public readonly DependencyProperty RadiusProperty =
     DependencyProperty.Register(nameof(Radius), typeof(double),
     typeof(Sector), new PropertyMetadata(0.0,
     new PropertyChangedCallback((DependencyObject obj, DependencyPropertyChangedEventArgs eventArgs) =>
@@ -150,7 +150,7 @@ public class Sector : Path
     /// <summary>
     /// Hole Property
     /// </summary>
-    private readonly DependencyProperty HoleProperty =
+    public readonly DependencyProperty HoleProperty =
     DependencyProperty.Register(nameof(Hole), typeof(double),
     typeof(Sector), new PropertyMetadata(0.0,
     new PropertyChangedCallback((DependencyObject obj, DependencyPropertyChangedEventArgs eventArgs) =>
