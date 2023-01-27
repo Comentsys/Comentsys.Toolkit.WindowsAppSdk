@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 1.0.1
+
+- Fixed Piece and Sector Dependency Properties
+
 ### Version 1.0.0
 
 - Initial Release
