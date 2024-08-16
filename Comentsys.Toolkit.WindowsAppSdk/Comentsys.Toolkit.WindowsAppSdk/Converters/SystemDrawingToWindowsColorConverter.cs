@@ -1,28 +1,29 @@
 ﻿namespace Comentsys.Toolkit.WindowsAppSdk;
 
 /// <summary>
-/// Bool to Visibility Converter
+/// System Drawing to Windows Color Converter
 /// </summary>
-public class BoolToVisibilityConverter : IValueConverter
+public class SystemDrawingToWindowsColorConverter
 {
     /// <summary>
     /// Convert
     /// </summary>
-    /// <param name="value">Bool Value</param>
+    /// <param name="value">Source</param>
     /// <param name="targetType">Target Type</param>
     /// <param name="parameter">Parameter</param>
     /// <param name="language">Language</param>
-    /// <returns>Visibility</returns>
+    /// <returns>Target</returns>
     public object Convert(object value, Type targetType, object parameter, string language) =>
-        (bool)value ? Visibility.Visible : Visibility.Collapsed;
+        value is System.Drawing.Color item ? item.AsWindowsColor() : Colors.Transparent;
 
     /// <summary>
     /// Convert Back
     /// </summary>
-    /// <param name="value">Value</param>
+    /// <param name="value">Source</param>
     /// <param name="targetType">Target Type</param>
     /// <param name="parameter">Parameter</param>
     /// <param name="language">Language</param>
+    /// <returns>Target</returns>
     /// <exception cref="NotImplementedException"></exception>
     public object ConvertBack(object value, Type targetType, object parameter, string language) =>
         throw new NotImplementedException();

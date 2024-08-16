@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  IgnorableNamespaces="uap uap3 rescap">
+
+	<Identity
+	  Name="eda74807-be92-462a-a890-02405b50a62f"
+	  Publisher="CN=Comentsys"
+	  Version="1.0.0.0" />
+
+	<mp:PhoneIdentity PhoneProductId="eda74807-be92-462a-a890-02405b50a62f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+	<Properties>
+		<DisplayName>Counting Widget</DisplayName>
+		<PublisherDisplayName>Comentsys</PublisherDisplayName>
+		<Logo>Assets\StoreLogo.png</Logo>
+	</Properties>
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+	</Dependencies>
+
+	<Resources>
+		<Resource Language="x-generate"/>
+	</Resources>
+
+	<Applications>
+		<Application Id="App"
+		  Executable="$targetnametoken$.exe"
+		  EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+			  DisplayName="Counting Widget"
+			  Description="Counting Widget"
+			  BackgroundColor="transparent"
+			  Square150x150Logo="Assets\Square150x150Logo.png"
+			  Square44x44Logo="Assets\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+				<uap:SplashScreen Image="Assets\SplashScreen.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:ExeServer Executable="Counting.Widget.exe" Arguments="-headless" DisplayName="Counting Widget">
+							<com:Class Id="eda74807-be92-462a-a890-02405b50a62f" DisplayName="Counting Widget" />
+						</com:ExeServer>
+					</com:ComServer>
+				</com:Extension>
+				<uap3:Extension Category="windows.appExtension">
+					<uap3:AppExtension Name="com.microsoft.windows.widgets" DisplayName="Counting Widget" Id="CountingWidget" PublicFolder="Public">
+						<uap3:Properties>
+							<WidgetProvider>
+								<ProviderIcons>
+									<Icon Path="Assets\StoreLogo.png" />
+								</ProviderIcons>
+								<Activation>
+									<!-- Apps exports COM interface which implements IWidgetProvider -->
+									<CreateInstance ClassId="eda74807-be92-462a-a890-02405b50a62f" />
+								</Activation>
+								<Definitions>
+									<Definition Id="CountingWidget"
+										DisplayName="Counting Widget"
+										Description="Counting Widget">
+										<Capabilities>
+											<Capability>
+												<Size Name="small" />
+											</Capability>
+											<Capability>
+												<Size Name="medium" />
+											</Capability>
+											<Capability>
+												<Size Name="large" />
+											</Capability>
+										</Capabilities>
+										<ThemeResources>
+											<Icons>
+												<Icon Path="Assets\Counting_Icon.png" />
+											</Icons>
+											<Screenshots>
+												<Screenshot Path="Assets\Counting_Screenshot.png" DisplayAltText="For accessibility" />
+											</Screenshots>
+											<!-- DarkMode and LightMode are optional -->
+											<DarkMode />
+											<LightMode />
+										</ThemeResources>
+									</Definition>
+								</Definitions>
+							</WidgetProvider>
+						</uap3:Properties>
+					</uap3:AppExtension>
+				</uap3:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
+</Package>
