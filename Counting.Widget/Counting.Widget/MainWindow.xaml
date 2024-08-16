@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Counting.Widget.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Counting.Widget"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="25" Orientation="Vertical" Spacing="5">
+        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Counting Widget" />
+        <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Steps to add the Counting Widget in Windows 11"/>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="1. Select the Widget or Weather icon on the left of the task bar"/>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="2. On the Widgets pane select the '+' or 'Add Widgets' button"/>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="3. Search for 'Counting Widget' and select the 'Pin' button"/>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="4. The 'Counting Widget' should then have added to the Widgets Pane"/>
+    </StackPanel>
+</Window>

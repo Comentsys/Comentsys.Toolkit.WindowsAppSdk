@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
 		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
 		<RootNamespace>Comentsys.Toolkit.WindowsAppSdk</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -11,11 +12,12 @@
 		<Title>Comentsys Toolkit for Windows App SDK</Title>
 		<Authors>Comentsys</Authors>
 		<Company>Comentsys</Company>
-		<Version>1.0.1</Version>
+		<Version>2.0.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReleaseNotes>
 			1.0.0 - Initial Release
 			1.0.1 - Fixed Piece and Sector Dependency Properties
+			2.0.0 - Update for .NET 8, Add SystemDrawingToWindowsColorConverter, Directional Pad, Directional Stick and Widget Functionality
 		</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/Comentsys/Comentsys.Toolkit.WindowsAppSdk</PackageProjectUrl>
 		<Description>Windows App SDK Toolkit for Controls, Converters and Extensions</Description>
@@ -24,6 +26,7 @@
 		<RepositoryUrl>https://github.com/Comentsys/Comentsys.Toolkit.WindowsAppSdk</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>comentsys.toolkit.windowsappsdk.png</PackageIcon>
+		<NoWarn>$(NoWarn);NETSDK1206</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -38,8 +41,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Comentsys.Toolkit" Version="1.0.0" />
-	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
+	  <PackageReference Include="Comentsys.Toolkit" Version="1.1.*" />
+	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.*" />
 	</ItemGroup>
 
 </Project>

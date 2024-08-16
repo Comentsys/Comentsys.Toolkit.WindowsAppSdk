@@ -31,8 +31,7 @@ public class Dialog
     {
         try
         {
-            if (_dialog != null)
-                _dialog.Hide();
+            _dialog?.Hide();
             _dialog = new ContentDialog()
             {
                 XamlRoot = _root,
@@ -79,4 +78,22 @@ public class Dialog
     /// <param name="title">Override Title</param>
     public void Show(string content, string primaryButtonText = "Ok", string? title = null) =>
         Show(content as object, primaryButtonText, title);
+
+    /// <summary>
+    /// Show
+    /// </summary>
+    /// <param name="content">Content</param>
+    /// <param name="primaryButtonText">Primary Button Text</param>
+    /// <param name="title">Override Title</param>
+    public async Task ShowAsync(object content, string primaryButtonText = "Ok", string? title = null) =>
+        await ConfirmAsync(content, primaryButtonText, title: title);
+
+    /// <summary>
+    /// Show
+    /// </summary>
+    /// <param name="content">Content</param>
+    /// <param name="primaryButtonText">Primary Button Text</param>
+    /// <param name="title">Override Title</param>
+    public Task ShowAsync(string content, string primaryButtonText = "Ok", string? title = null) =>
+        ShowAsync(content as object, primaryButtonText, title);
 }

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Counting.Widget (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Counting.Widget (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
