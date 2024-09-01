@@ -45,6 +45,12 @@ public abstract class WidgetBase(string widgetId, string initialState) : IWidget
         this.state = state;
 
     /// <summary>
+    /// Create Widget
+    /// </summary>
+    /// <param name="state">State</param>
+    public virtual void CreateWidget(string state) { }
+
+    /// <summary>
     /// Activate Widget
     /// </summary>
     public virtual void Activate() { }
@@ -53,6 +59,12 @@ public abstract class WidgetBase(string widgetId, string initialState) : IWidget
     /// Deactivate Widget
     /// </summary>
     public virtual void Deactivate() { }
+
+    /// <summary>
+    /// Delete Widget
+    /// </summary>
+    /// <param name="state">State</param>
+    public virtual void DeleteWidget(string state) { }
 
     /// <summary>
     /// Widget On Action Invoked
@@ -65,6 +77,12 @@ public abstract class WidgetBase(string widgetId, string initialState) : IWidget
     /// </summary>
     /// <param name="contextChangedArgs">Context Changed Args</param>
     public virtual void OnWidgetContextChanged(WidgetContextChangedArgs contextChangedArgs) { }
+
+    /// <summary>
+    /// On Widget Customization Requested
+    /// </summary>
+    /// <param name="customizationRequestedArgs">Customization Requested Args</param>
+    public virtual void OnCustomizationRequested(WidgetCustomizationRequestedArgs customizationRequestedArgs) { }
 
     /// <summary>
     /// Get Template for Widget

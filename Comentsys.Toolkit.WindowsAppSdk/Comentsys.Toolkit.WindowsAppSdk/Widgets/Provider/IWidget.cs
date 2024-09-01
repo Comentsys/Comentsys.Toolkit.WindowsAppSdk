@@ -27,6 +27,12 @@ public interface IWidget
     void SetState(string state);
 
     /// <summary>
+    /// Create Widget
+    /// </summary>
+    /// <param name="state">State</param>
+    void CreateWidget(string state);
+
+    /// <summary>
     /// Activate Widget
     /// </summary>
     void Activate();
@@ -37,6 +43,12 @@ public interface IWidget
     void Deactivate();
 
     /// <summary>
+    /// Delete Widget
+    /// </summary>
+    /// <param name="state">State</param>
+    void DeleteWidget(string state);
+
+    /// <summary>
     /// Widget On Action Invoked
     /// </summary>
     /// <param name="actionInvokedArgs">Widget Action Invoked Args</param>
@@ -45,8 +57,14 @@ public interface IWidget
     /// <summary>
     /// On Widget Context Changed
     /// </summary>
-    /// <param name="contextChangedArgs"></param>
+    /// <param name="contextChangedArgs">Context Changed Args</param>
     void OnWidgetContextChanged(WidgetContextChangedArgs contextChangedArgs);
+
+    /// <summary>
+    /// On Widget Customization Requested
+    /// </summary>
+    /// <param name="customizationRequestedArgs">Customization Requested Args</param>
+    void OnCustomizationRequested(WidgetCustomizationRequestedArgs customizationRequestedArgs);
 
     /// <summary>
     /// Get Template for Widget

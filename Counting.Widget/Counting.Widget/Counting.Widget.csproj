@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Comentsys.Toolkit.WindowsAppSdk" Version="2.0.0" />
+    <PackageReference Include="Comentsys.Toolkit.WindowsAppSdk" Version="2.1.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240802000" />
     <Manifest Include="$(ApplicationManifest)" />
