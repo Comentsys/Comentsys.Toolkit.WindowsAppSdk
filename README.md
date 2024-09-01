@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 2.1.0
+
+- Add CreateWidget, DeleteWidget and OnCustomizationRequested for Widget Functionality
+
 ### Version 2.0.0
 
 - Update for .NET 8, Add SystemDrawingToWindowsColorConverter, Directional Pad, Directional Stick and Widget Functionality
@@ -460,11 +464,6 @@ You can find out more about creating **Widget** with a **Counting.Widget** examp
 
 Widget Base
 
-| Name | Description |
-| ---- | ----------- |
-| widgetId | *System.String*<br>Widget Id |
-| initialState | *System.String*<br>Initial State |
-
 ### Constructor(widgetId, initialState)
 
 Widget Base
@@ -478,9 +477,25 @@ Widget Base
 
 Activate Widget
 
+### CreateWidget(state)
+
+Create Widget
+
+| Name | Description |
+| ---- | ----------- |
+| state | *System.String*<br>State |
+
 ### Deactivate
 
 Deactivate Widget
+
+### DeleteWidget(state)
+
+Delete Widget
+
+| Name | Description |
+| ---- | ----------- |
+| state | *System.String*<br>State |
 
 ### GetDataForWidget
 
@@ -513,6 +528,102 @@ Widget On Action Invoked
 | Name | Description |
 | ---- | ----------- |
 | actionInvokedArgs | *Microsoft.Windows.Widgets.Providers.WidgetActionInvokedArgs*<br>Widget Action Invoked Args |
+
+### OnCustomizationRequested(customizationRequestedArgs)
+
+On Widget Customization Requested
+
+| Name | Description |
+| ---- | ----------- |
+| customizationRequestedArgs | *Microsoft.Windows.Widgets.Providers.WidgetCustomizationRequestedArgs*<br>Customization Requested Args |
+
+### OnWidgetContextChanged(contextChangedArgs)
+
+On Widget Context Changed
+
+| Name | Description |
+| ---- | ----------- |
+| contextChangedArgs | *Microsoft.Windows.Widgets.Providers.WidgetContextChangedArgs*<br>Context Changed Args |
+
+### SetState(state)
+
+Set State
+
+| Name | Description |
+| ---- | ----------- |
+| state | *System.String*<br>State |
+
+### State
+
+State
+
+## IWidget
+
+Widget
+
+### Activate
+
+Activate Widget
+
+### CreateWidget(state)
+
+Create Widget
+
+| Name | Description |
+| ---- | ----------- |
+| state | *System.String*<br>State |
+
+### Deactivate
+
+Deactivate Widget
+
+### DeleteWidget(state)
+
+Delete Widget
+
+| Name | Description |
+| ---- | ----------- |
+| state | *System.String*<br>State |
+
+### GetDataForWidget
+
+Get Data for Widget
+
+#### Returns
+
+Widget Data
+
+### GetTemplateForWidget
+
+Get Template for Widget
+
+#### Returns
+
+Widget Template
+
+### Id
+
+Id
+
+### IsActivated
+
+Is Activated?
+
+### OnActionInvoked(actionInvokedArgs)
+
+Widget On Action Invoked
+
+| Name | Description |
+| ---- | ----------- |
+| actionInvokedArgs | *Microsoft.Windows.Widgets.Providers.WidgetActionInvokedArgs*<br>Widget Action Invoked Args |
+
+### OnCustomizationRequested(customizationRequestedArgs)
+
+On Widget Customization Requested
+
+| Name | Description |
+| ---- | ----------- |
+| customizationRequestedArgs | *Microsoft.Windows.Widgets.Providers.WidgetCustomizationRequestedArgs*<br>Customization Requested Args |
 
 ### OnWidgetContextChanged(contextChangedArgs)
 
@@ -587,7 +698,7 @@ Create Widget
 | ---- | ----------- |
 | widgetContext | *Microsoft.Windows.Widgets.Providers.WidgetContext*<br>Widget Context |
 
-*InvalidWidgetDefinitionException:* 
+*InvalidWidgetDefinitionException:* Invalid Widget Definition
 
 ### Deactivate(widgetId)
 
@@ -625,6 +736,14 @@ Widget On Action Invoked
 | Name | Description |
 | ---- | ----------- |
 | actionInvokedArgs | *Microsoft.Windows.Widgets.Providers.WidgetActionInvokedArgs*<br>Action Invoked Args |
+
+### OnCustomizationRequested(customizationRequestedArgs)
+
+On Widget Customization Requested
+
+| Name | Description |
+| ---- | ----------- |
+| customizationRequestedArgs | *Microsoft.Windows.Widgets.Providers.WidgetCustomizationRequestedArgs*<br>Customization Requested Args |
 
 ### OnWidgetContextChanged(contextChangedArgs)
 
@@ -748,22 +867,11 @@ MIT License
 
 Copyright (c) Comentsys
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
@@ -772,21 +880,9 @@ MIT License
 
 Copyright (c) Microsoft Corporation.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 ```

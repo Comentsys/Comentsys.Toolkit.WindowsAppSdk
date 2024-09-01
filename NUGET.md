@@ -1,6 +1,6 @@
 # Comentsys.Toolkit.WindowsAppSdk
 
-**Comentsys.Toolkit.WindowsAppSdk** is a **Toolkit** with **Controls**, **Converters** and **Extensions** for **Windows App SDK** and uses **Comentsys.Toolkit**.
+**Comentsys.Toolkit.WindowsAppSdk** is a **Toolkit** with **Controls**, **Converters**, **Extensions** and **Widget** functionality for **Windows App SDK** and uses **Comentsys.Toolkit**.
 
 ## Documentation and Source Code
 
@@ -16,7 +16,18 @@ Install-Package Comentsys.Toolkit.WindowsAppSdk
 
 ## Change Log
 
+### Version 2.1.0
+
+- Add CreateWidget, DeleteWidget and OnCustomizationRequested for Widget Functionality
+
+### Version 2.0.0
+
+- Update for .NET 8, Add SystemDrawingToWindowsColorConverter, Directional Pad, Directional Stick and Widget Functionality
+
+### Version 1.0.1
+
+- Fixed Piece and Sector Dependency Properties
+
 ### Version 1.0.0
 
 - Initial Release
-

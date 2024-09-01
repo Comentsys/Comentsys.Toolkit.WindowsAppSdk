@@ -8,7 +8,7 @@
 /// </remarks>
 [ComVisible(true)]
 [ComDefaultInterface(typeof(IWidgetProvider))]
-public abstract class WidgetProviderBase : IWidgetProvider
+public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
 {
     private static bool _recoveredWidgets = false;
     private static readonly Dictionary<string, IWidget> _widgetInstances = [];
@@ -35,7 +35,11 @@ public abstract class WidgetProviderBase : IWidgetProvider
                         if (FindWidget(widgetId) is null)
                         {
                             if (_widgetImplementations.TryGetValue(widgetName, out WidgetCreateDelegate? value))
-                                _widgetInstances[widgetId] = value(widgetId, widgetState);
+                            {
+                                var widgetInstance = value(widgetId, widgetState);
+                                widgetInstance.CreateWidget(widgetState);
+                                _widgetInstances[widgetId] = widgetInstance;
+                            }
                             else
                                 widgetManager.DeleteWidget(widgetId);
                         }
@@ -92,7 +96,7 @@ public abstract class WidgetProviderBase : IWidgetProvider
     /// Create Widget
     /// </summary>
     /// <param name="widgetContext">Widget Context</param>
-    /// <exception cref="InvalidWidgetDefinitionException"></exception>
+    /// <exception cref="InvalidWidgetDefinitionException">Invalid Widget Definition</exception>
     public void CreateWidget(WidgetContext widgetContext)
     {
         if (!_widgetImplementations.TryGetValue(widgetContext.DefinitionId, out WidgetCreateDelegate? widgetCreateDelegate))
@@ -100,7 +104,7 @@ public abstract class WidgetProviderBase : IWidgetProvider
 
         var widgetInstance = widgetCreateDelegate(widgetContext.Id, string.Empty);
         _widgetInstances[widgetContext.Id] = widgetInstance;
-
+        widgetInstance.CreateWidget(string.Empty);
         var widgetOptions = new WidgetUpdateRequestOptions(widgetContext.Id)
         {
             Template = widgetInstance.GetTemplateForWidget(),
@@ -115,8 +119,14 @@ public abstract class WidgetProviderBase : IWidgetProvider
     /// </summary>
     /// <param name="widgetId">Widget Id</param>
     /// <param name="customState">Custom State</param>
-    public void DeleteWidget(string widgetId, string customState) =>
-        _widgetInstances.Remove(widgetId);
+    public void DeleteWidget(string widgetId, string customState)
+    {
+        if (FindWidget(widgetId) is { } runningWidget)
+        {
+            runningWidget.DeleteWidget(customState);
+            _widgetInstances.Remove(widgetId);
+        }
+    }
 
     /// <summary>
     /// Widget On Action Invoked
@@ -136,6 +146,16 @@ public abstract class WidgetProviderBase : IWidgetProvider
     {
         if (FindWidget(contextChangedArgs.WidgetContext.Id) is { } runningWidget)
             runningWidget.OnWidgetContextChanged(contextChangedArgs);
+    }
+
+    /// <summary>
+    /// On Widget Customization Requested
+    /// </summary>
+    /// <param name="customizationRequestedArgs">Customization Requested Args</param>
+    public void OnCustomizationRequested(WidgetCustomizationRequestedArgs customizationRequestedArgs)
+    {
+        if (FindWidget(customizationRequestedArgs.WidgetContext.Id) is { } runningWidget)
+            runningWidget.OnCustomizationRequested(customizationRequestedArgs);
     }
 
     /// <summary>
