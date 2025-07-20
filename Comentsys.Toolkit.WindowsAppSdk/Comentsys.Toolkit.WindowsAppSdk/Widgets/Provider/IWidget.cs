@@ -6,6 +6,11 @@
 public interface IWidget
 {
     /// <summary>
+    /// Widget Context
+    /// </summary>
+    WidgetContext? Context { get; set; }
+
+    /// <summary>
     /// Id
     /// </summary>
     string Id { get; }
@@ -21,10 +26,21 @@ public interface IWidget
     bool IsActivated { get; }
 
     /// <summary>
+    /// Is Configure?
+    /// </summary>
+    bool IsConfigure { get; set; }
+
+    /// <summary>
     /// Set State
     /// </summary>
     /// <param name="state">State</param>
     void SetState(string state);
+
+    /// <summary>
+    /// Set Is Activated
+    /// </summary>
+    /// <param name="isActivated">Is Activated</param>
+    void SetIsActivated(bool isActivated);
 
     /// <summary>
     /// Create Widget

@@ -12,13 +12,14 @@
 		<Title>Comentsys Toolkit for Windows App SDK</Title>
 		<Authors>Comentsys</Authors>
 		<Company>Comentsys</Company>
-		<Version>2.1.0</Version>
+		<Version>2.2.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReleaseNotes>
 			1.0.0 - Initial Release
 			1.0.1 - Fixed Piece and Sector Dependency Properties
 			2.0.0 - Update for .NET 8, Add SystemDrawingToWindowsColorConverter, Directional Pad, Directional Stick and Widget Functionality
 			2.1.0 - Add CreateWidget, DeleteWidget and OnCustomizationRequested for Widget Functionality
+			2.2.0 - Update WidgetBase and WidgetProviderBase for IsConfigure and IsActivated Properties along with optional Context Property
 		</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/Comentsys/Comentsys.Toolkit.WindowsAppSdk</PackageProjectUrl>
 		<Description>Windows App SDK Toolkit for Controls, Converters and Extensions</Description>

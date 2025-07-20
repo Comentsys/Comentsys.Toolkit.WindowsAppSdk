@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 2.2.0
+
+- Update WidgetBase and WidgetProviderBase for IsConfigure and IsActivated Properties along with optional Context Property
+
 ### Version 2.1.0
 
 - Add CreateWidget, DeleteWidget and OnCustomizationRequested for Widget Functionality
@@ -28,6 +32,12 @@
 
 Asset Resource
 
+### Example
+
+![Asset Control Example](Assets/asset-control.png)
+
+> Example using `AssetResource` from `ShadedFluentEmoji.Get(FluentEmojiType.GrinningFace)` in **Package** of `Comentsys.Assets.FluentEmoji`.
+
 ## Card
 
 `Card` will display a **Playing Card** for card-based games such as **Blackjack**, **Poker** and more. You can customise the `Back` of a `Card` using any `Brush` and can set the `Value` from *0* which will display the `Back` to between *1* and *52* to represent each **Suit** and **Card**.
@@ -39,6 +49,10 @@ Card Back
 ### Value
 
 Card Value
+
+### Example
+
+![Card Control Example](Assets/card-control.png)
 
 ## Dialog
 
@@ -135,6 +149,10 @@ Dice Foreground
 
 Dice Value
 
+### Example
+
+![Example Dice Control](Assets/dice-control.png)
+
 ## DirectionalPad
 
 `DirectionalPad` can be used for selecting a `Direction` of `Up`, `Down`, `Left` and `Right`
@@ -152,6 +170,9 @@ Foreground
 
 Value Changed Event
 
+### Example
+
+![Example Directional Pad Control](Assets/directionalpad-control.png)
 
 ## DirectionalPadDirection
 
@@ -172,7 +193,6 @@ Right Pad
 ### Up
 
 Up Pad
-
 
 ## DirectionalPadEventArgs
 
@@ -219,6 +239,10 @@ Sensitivity
 
 Value Changed Event
 
+### Example
+
+![Example Directional Stick Control](Assets/directionalstick-control.png)
+
 ## DirectionalStickEventArgs
 
 Directional Stick Event Args
@@ -255,6 +279,10 @@ Piece Stroke
 
 Piece Value
 
+### Example
+
+![Example Piece Control](Assets/piece-control.png)
+
 ## Sector
 
 `Sector` can be used to represent a portion or **Arc** section of a **Circle** as needed. The `Start` and `Finish` position of the `Sector` can be set, along with the `Radius` and `Hole` which allows for a variety of combinations for display, it also supports all the values of a `Path` for a `Shape`.
@@ -274,6 +302,10 @@ Sector Radius
 ### Start
 
 Sector Start
+
+### Example
+
+![Example Sector Control](Assets/sector-control.png)
 
 ## BoolToVisibilityConverter
 
@@ -450,8 +482,8 @@ You can then setup the **Widget** and **Register** the **Widget Provider** as fo
 
 ```csharp
 ComWrappersSupport.InitializeComWrappers();
-WidgetProvider.AddWidget(CountingWidget.DefinitionId, (widgetId, initialState) =>
-    new CountingWidget(widgetId, initialState));
+WidgetProvider.AddWidget(CountingWidget.DefinitionId, (widgetId, initialState, widgetContext) =>
+    new CountingWidget(widgetId, initialState, widgetContext));
 using var manager = RegistrationManager<WidgetProvider>.RegisterProvider();
 var widgets = WidgetManager.GetDefault().GetWidgetIds();
 ```
@@ -464,7 +496,7 @@ You can find out more about creating **Widget** with a **Counting.Widget** examp
 
 Widget Base
 
-### Constructor(widgetId, initialState)
+### Constructor(widgetId, initialState, widgetContext)
 
 Widget Base
 
@@ -472,10 +504,15 @@ Widget Base
 | ---- | ----------- |
 | widgetId | *System.String*<br>Widget Id |
 | initialState | *System.String*<br>Initial State |
+| widgetContext | *Microsoft.Windows.Widgets.Providers.WidgetContext*<br>Widget Context |
 
 ### Activate
 
 Activate Widget
+
+## Context
+
+Widget Context
 
 ### CreateWidget(state)
 
@@ -517,6 +554,10 @@ Widget Template
 
 Id
 
+### IsConfigure
+
+Is Configure?
+
 ### IsActivated
 
 Is Activated?
@@ -544,6 +585,14 @@ On Widget Context Changed
 | Name | Description |
 | ---- | ----------- |
 | contextChangedArgs | *Microsoft.Windows.Widgets.Providers.WidgetContextChangedArgs*<br>Context Changed Args |
+
+### SetIsActivated(isActivated)
+
+Set Is Activated
+
+| Name | Description |
+| ---- | ----------- |
+| isActivated | *System.Boolean*<br>Is Activated |
 
 ### SetState(state)
 
@@ -565,6 +614,10 @@ Widget
 
 Activate Widget
 
+## Context
+
+Widget Context
+
 ### CreateWidget(state)
 
 Create Widget
@@ -609,6 +662,10 @@ Id
 
 Is Activated?
 
+### IsConfigure
+
+Is Configure?
+
 ### OnActionInvoked(actionInvokedArgs)
 
 Widget On Action Invoked
@@ -632,6 +689,14 @@ On Widget Context Changed
 | Name | Description |
 | ---- | ----------- |
 | contextChangedArgs | *Microsoft.Windows.Widgets.Providers.WidgetContextChangedArgs*<br>Context Changed Args |
+
+### SetIsActivated(isActivated)
+
+Set Is Activated
+
+| Name | Description |
+| ---- | ----------- |
+| isActivated | *System.Boolean*<br>Is Activated |
 
 ### SetState(state)
 
@@ -685,6 +750,15 @@ Add Widget
 | ---- | ----------- |
 | widgetId | *System.String*<br>Widget Id |
 | widgetCreateDelegate | *WidgetCreateDelegate*<br>Widget Create Delegate |
+
+### AddWidget(widgetId, widgetDefaultCreateDelegate)
+
+Add Widget
+
+| Name | Description |
+| ---- | ----------- |
+| widgetId | *System.String*<br>Widget Id |
+| widgetDefaultCreateDelegate | *WidgetDefaultCreateDelegate*<br>Widget Default Create Delegate |
 
 ### ClearWidgets
 
@@ -830,6 +904,20 @@ Registration Manager of Widget Provider
 ## WidgetCreateDelegate
 
 Widget Create Delegate
+
+| Name | Description |
+| ---- | ----------- |
+| widgetId | *System.String*<br>Widget Id |
+| initialState | *System.String*<br>Initial State |
+| widgetContext | *Microsoft.Windows.Widgets.Providers.WidgetContext*<br>Widget Context |
+
+#### Returns
+
+Widget Base
+
+## WidgetDefaultCreateDelegate
+
+Widget Default Create Delegate
 
 | Name | Description |
 | ---- | ----------- |

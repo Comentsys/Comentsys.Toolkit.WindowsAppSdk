@@ -16,6 +16,10 @@ Install-Package Comentsys.Toolkit.WindowsAppSdk
 
 ## Change Log
 
+### Version 2.2.0
+
+- Update WidgetBase and WidgetProviderBase for IsConfigure and IsActivated Properties along with optional Context Property
+
 ### Version 2.1.0
 
 - Add CreateWidget, DeleteWidget and OnCustomizationRequested for Widget Functionality

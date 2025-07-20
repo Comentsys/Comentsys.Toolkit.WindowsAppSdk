@@ -24,7 +24,8 @@ public class CountingWidget : WidgetBase
     /// </summary>
     /// <param name="widgetId">Widget Id</param>
     /// <param name="startingState">Starting State</param>
-    public CountingWidget(string widgetId, string startingState) : base(widgetId, startingState)
+    /// <param name="widgetContext">Widget Context</param>
+    public CountingWidget(string widgetId, string startingState, WidgetContext widgetContext) : base(widgetId, startingState, widgetContext)
     {
         if (state == string.Empty)
             state = default_display;
@@ -51,18 +52,6 @@ public class CountingWidget : WidgetBase
             WidgetManager.GetDefault().UpdateWidget(updateOptions);
         }
     }
-
-    /// <summary>
-    /// Activate
-    /// </summary>
-    public override void Activate() =>
-        isActivated = true;
-
-    /// <summary>
-    /// Deactivate
-    /// </summary>
-    public override void Deactivate() =>
-        isActivated = false;
 
     /// <summary>
     /// Get Template for Widget
