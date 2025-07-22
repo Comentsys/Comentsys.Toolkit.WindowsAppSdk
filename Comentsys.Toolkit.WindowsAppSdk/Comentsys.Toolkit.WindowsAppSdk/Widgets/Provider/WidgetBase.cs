@@ -5,7 +5,8 @@
 /// </summary>
 /// <param name="widgetId">Widget Id</param>
 /// <param name="initialState">Initial State</param>
-public abstract class WidgetBase(string widgetId, string initialState) : IWidget
+/// <param name="widgetContext">Widget Context</param>
+public abstract class WidgetBase(string widgetId, string initialState, WidgetContext? widgetContext = null) : IWidget
 {
     /// <summary>
     /// Id
@@ -23,6 +24,11 @@ public abstract class WidgetBase(string widgetId, string initialState) : IWidget
     protected bool isActivated = false;
 
     /// <summary>
+    /// Widget Context
+    /// </summary>
+    public WidgetContext? Context { get; set; } = widgetContext;
+
+    /// <summary>
     /// Id
     /// </summary>
     public string Id { get => id; }
@@ -38,11 +44,23 @@ public abstract class WidgetBase(string widgetId, string initialState) : IWidget
     public bool IsActivated { get => isActivated; }
 
     /// <summary>
+    /// Is Configure?
+    /// </summary>
+    public bool IsConfigure { get; set; }
+
+    /// <summary>
     /// Set State
     /// </summary>
     /// <param name="state">State</param>
     public void SetState(string state) =>
         this.state = state;
+
+    /// <summary>
+    /// Set Is Activated
+    /// </summary>
+    /// <param name="isActivated">Is Activated</param>
+    public void SetIsActivated(bool isActivated) =>
+        this.isActivated = isActivated;
 
     /// <summary>
     /// Create Widget

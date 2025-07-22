@@ -27,8 +27,8 @@ public partial class App : Application
     {
         ComWrappersSupport.InitializeComWrappers();
         InitializeComponent();
-        WidgetProvider.AddWidget(CountingWidget.DefinitionId, (widgetId, initialState) => 
-            new CountingWidget(widgetId, initialState));
+        WidgetProvider.AddWidget(CountingWidget.DefinitionId, (widgetId, initialState, widgetContext) => 
+            new CountingWidget(widgetId, initialState, widgetContext));
         WidgetRegistrationManager<WidgetProvider>.RegisterProvider();
     }
 

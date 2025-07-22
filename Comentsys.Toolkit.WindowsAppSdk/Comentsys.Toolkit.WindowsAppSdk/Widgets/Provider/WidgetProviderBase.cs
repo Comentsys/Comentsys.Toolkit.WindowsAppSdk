@@ -36,7 +36,7 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
                         {
                             if (_widgetImplementations.TryGetValue(widgetName, out WidgetCreateDelegate? value))
                             {
-                                var widgetInstance = value(widgetId, widgetState);
+                                var widgetInstance = value(widgetId, widgetState, widgetContext);
                                 widgetInstance.CreateWidget(widgetState);
                                 _widgetInstances[widgetId] = widgetInstance;
                             }
@@ -78,7 +78,11 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
     public void Activate(WidgetContext widgetContext)
     {
         if (FindWidget(widgetContext.Id) is { } widget)
+        {
+            widget.Context = widgetContext;
+            widget.SetIsActivated(true);
             widget.Activate();
+        }
     }
 
     /// <summary>
@@ -88,9 +92,11 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
     public void Deactivate(string widgetId)
     {
         if (FindWidget(widgetId) is { } widget)
+        {
+            widget.SetIsActivated(false);
             widget.Deactivate();
+        }
     }
-
 
     /// <summary>
     /// Create Widget
@@ -102,7 +108,7 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
         if (!_widgetImplementations.TryGetValue(widgetContext.DefinitionId, out WidgetCreateDelegate? widgetCreateDelegate))
             throw new InvalidWidgetDefinitionException(widgetContext.DefinitionId);
 
-        var widgetInstance = widgetCreateDelegate(widgetContext.Id, string.Empty);
+        var widgetInstance = widgetCreateDelegate(widgetContext.Id, string.Empty, widgetContext);
         _widgetInstances[widgetContext.Id] = widgetInstance;
         widgetInstance.CreateWidget(string.Empty);
         var widgetOptions = new WidgetUpdateRequestOptions(widgetContext.Id)
@@ -155,7 +161,10 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
     public void OnCustomizationRequested(WidgetCustomizationRequestedArgs customizationRequestedArgs)
     {
         if (FindWidget(customizationRequestedArgs.WidgetContext.Id) is { } runningWidget)
+        {
+            runningWidget.IsConfigure = true;
             runningWidget.OnCustomizationRequested(customizationRequestedArgs);
+        }
     }
 
     /// <summary>
@@ -188,6 +197,14 @@ public abstract class WidgetProviderBase : IWidgetProvider, IWidgetProvider2
     /// <param name="widgetCreateDelegate">Widget Create Delegate</param>
     public static void AddWidget(string widgetName, WidgetCreateDelegate widgetCreateDelegate) =>
         _widgetImplementations.Add(widgetName, widgetCreateDelegate);
+
+    /// <summary>
+    /// Add Widget
+    /// </summary>
+    /// <param name="widgetName">Widget Name</param>
+    /// <param name="widgetDefaultCreateDelegate">Widget Default Create Delegate</param>
+    public static void AddWidget(string widgetName, WidgetDefaultCreateDelegate widgetDefaultCreateDelegate) =>
+        _widgetImplementations.Add(widgetName, (id, state, context) => widgetDefaultCreateDelegate(id, state));
 
     /// <summary>
     /// Clear Widgets
